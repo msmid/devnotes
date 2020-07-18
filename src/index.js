@@ -10,11 +10,6 @@ const methods = require('./methods');
 
 clear();
 
-console.log(
-  chalk.yellow(figlet.textSync('devnotes', { horizontalLayout: 'full' })),
-  chalk.bold(pkg.version, '\n')
-);
-
 const commands = ['start', 'help'];
 
 const run = async () => {
@@ -31,6 +26,10 @@ const run = async () => {
       methods.create();
       break;
     case 'help':
+      console.log(
+        chalk.yellow(figlet.textSync('devnotes', { horizontalLayout: 'full' })),
+        chalk.bold(pkg.version, '\n')
+      );
       printHelp();
       break;
   }

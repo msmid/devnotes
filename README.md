@@ -24,3 +24,7 @@ devnotes start
 
 - creates empty `devnotes.md` in your project root
 - append devnotes.md to `.gitignore`
+
+### `help`
+
+- sefl-explanatory
