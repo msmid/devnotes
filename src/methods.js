@@ -2,13 +2,15 @@ const fs = require('fs');
 const chalk = require('chalk');
 const path = require('path');
 
+const helpers = require('./helpers');
+
 const templateDir = path.resolve(path.join(__dirname, 'templates'));
-const rootPath = path.dirname(require.main.filename);
+const currentPath = helpers.getCurrentDirectory();
 
 const fileName = 'devnotes.md';
 
 const create = () => {
-  const path = `${rootPath}/${fileName}`;
+  const path = `${currentPath}/${fileName}`;
 
   if (fileExists(path)) {
     errorLog(`${fileName} already exists!`);
@@ -24,7 +26,7 @@ const create = () => {
 };
 
 const addToGitIgnore = () => {
-  const path = `${rootPath}/.gitignore`;
+  const path = `${currentPath}/.gitignore`;
 
   if (!fileExists(path)) {
     fs.writeFile(path, '', (err) => {
