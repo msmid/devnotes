@@ -3,9 +3,18 @@
   "version": "0.1.0",
   "description": "Keep your notes close to project",
   "main": "index.js",
-  "keywords": [],
+  "keywords": [
+    "utility"
+  ],
   "author": "Martin Smid",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/msmid/devnotes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/msmid/devnotes/issues"
+  },
   "scripts": {
     "build": "rollup -c",
     "start": "node src/index.js start",
