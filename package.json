@@ -1,0 +1,30 @@
+{
+  "name": "devnotes",
+  "version": "0.0.1",
+  "description": "Keep your notes close to project",
+  "main": "index.js",
+  "scripts": {
+    "run": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Martin Smid",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "clear": "^0.1.0",
+    "configstore": "^5.0.1",
+    "figlet": "^1.4.0",
+    "inquirer": "^7.1.0",
+    "lodash": "^4.17.15",
+    "minimist": "^1.2.5",
+    "replace-in-file": "^6.0.0",
+    "touch": "^3.1.0"
+  },
+  "bin": {
+    "devnotes": "./index.js"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}
