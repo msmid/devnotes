@@ -35,7 +35,7 @@ const addToGitIgnore = () => {
     });
   }
 
-  fs.appendFile(path, `\n${fileName}`, (err) => {
+  fs.appendFile(path, `\n/${fileName}`, (err) => {
     if (err) throw err;
     successLog('Added to .gitignore');
   });
