@@ -1,58 +1,93 @@
 const fs = require('fs');
-const chalk = require('chalk');
 const path = require('path');
+const replace = require('replace-in-file');
 
-const helpers = require('./helpers');
+const utils = require('./utils');
 
 const templateDir = path.resolve(path.join(__dirname, 'templates'));
-const currentPath = helpers.getCurrentDirectory();
+const currentPath = utils.getCurrentDirectory();
 
 const fileName = 'devnotes.md';
 
-const create = () => {
+// Init method
+const init = () => {
   const path = `${currentPath}/${fileName}`;
+  const packagePath = `${currentPath}/package.json`;
 
-  if (fileExists(path)) {
-    errorLog(`${fileName} already exists!`);
+  if (utils.fileExists(path)) {
+    utils.errorLog(`${fileName} already exists!`);
     return;
   }
 
   fs.copyFile(`${templateDir}/${fileName}`, path, (err) => {
     if (err) throw err;
-    successLog(`${fileName} created!`);
+    utils.successLog(`${fileName} created!`);
   });
 
+  if (utils.fileExists(packagePath)) {
+    const pkg = require(packagePath);
+    replaceInFile({
+      files: path,
+      from: /{{NAME}}/g,
+      to: pkg.name,
+    });
+  }
+
   addToGitIgnore();
+};
+
+// Add method
+const add = (block, text) => {
+  const path = `${currentPath}/${fileName}`;
+
+  const blocks = {};
+
+  if (!block) {
+    utils.errorLog('Missing block parameter');
+    return;
+  }
+
+  if (!text) {
+    utils.errorLog('Missing text parameter');
+    return;
+  }
+
+  if (!utils.fileExists(path)) {
+    utils.errorLog('devnotes.md does not exists. Create one with init command');
+    return;
+  }
+
+  fs.appendFile(path, `\n## ${text}`, (err) => {
+    if (err) throw err;
+    utils.successLog('Added');
+  });
 };
 
 const addToGitIgnore = () => {
   const path = `${currentPath}/.gitignore`;
 
-  if (!fileExists(path)) {
+  if (!utils.fileExists(path)) {
     fs.writeFile(path, '', (err) => {
       if (err) throw err;
-      successLog('.gitignore created');
+      utils.successLog('.gitignore created');
     });
   }
 
   fs.appendFile(path, `\n/${fileName}`, (err) => {
     if (err) throw err;
-    successLog('Added to .gitignore');
+    utils.successLog('Added to .gitignore');
   });
 };
 
-const fileExists = (path) => {
-  return fs.existsSync(path);
-};
-
-const successLog = (msg) => {
-  console.log(chalk.bold.green('\u2714'), chalk.gray(msg));
-};
-
-const errorLog = (msg) => {
-  console.log(chalk.bold.red('\u2718'), chalk.gray(msg));
+const replaceInFile = (options) => {
+  try {
+    replace.sync(options);
+  } catch (error) {
+    utils.errorLog('Error occurred:', error);
+  }
 };
 
 module.exports = {
-  create,
+  add,
+  init,
 };

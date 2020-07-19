@@ -17,8 +17,9 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "start": "node src/index.js start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js init",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-run": "rimraf devnotes.md && node src/index.js init"
   },
   "dependencies": {
     "chalk": "^4.0.0",

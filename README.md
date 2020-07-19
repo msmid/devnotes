@@ -15,12 +15,12 @@ npm install -g @msmid/devnotes
 in your project root:
 
 ```bash
-devnotes start
+devnotes init
 ```
 
 ## Commands
 
-### `start`
+### `init`
 
 - creates empty `devnotes.md` in your project root
 - append devnotes.md to `.gitignore`
