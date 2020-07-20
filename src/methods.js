@@ -3,6 +3,7 @@ const path = require('path');
 const replace = require('replace-in-file');
 
 const utils = require('./utils');
+const writer = require('./writer');
 
 const templateDir = path.resolve(path.join(__dirname, 'templates'));
 const currentPath = utils.getCurrentDirectory();
@@ -40,27 +41,12 @@ const init = () => {
 const add = (block, text) => {
   const path = `${currentPath}/${fileName}`;
 
-  const blocks = {};
-
-  if (!block) {
-    utils.errorLog('Missing block parameter');
-    return;
-  }
-
-  if (!text) {
-    utils.errorLog('Missing text parameter');
-    return;
-  }
-
   if (!utils.fileExists(path)) {
     utils.errorLog('devnotes.md does not exists. Create one with init command');
     return;
   }
 
-  fs.appendFile(path, `\n## ${text}`, (err) => {
-    if (err) throw err;
-    utils.successLog('Added');
-  });
+  writer.append(path, block, text);
 };
 
 const addToGitIgnore = () => {
