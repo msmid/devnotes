@@ -1,6 +1,6 @@
 const utils = require('./utils');
 
-const headline = (level) => {
+const headline = (level, text) => {
   if (level < 1 || level > 6) {
     utils.errorLog('Must be 1 - 6');
     return;
@@ -15,14 +15,19 @@ const headline = (level) => {
     }
   }
 
-  return `\n${output} `;
+  return `\n${output} ${text}`;
 };
 
-const paragraph = () => {
-  return '\n';
+const paragraph = (text) => {
+  return `\n${text}`;
+};
+
+const link = (text) => {
+  return `\n[${text}]()`;
 };
 
 module.exports = {
   headline,
   paragraph,
+  link,
 };

@@ -22,8 +22,13 @@ devnotes init
 
 ### `init`
 
-- creates empty `devnotes.md` in your project root
+- creates empty `devnotes.md` in your current path
 - append devnotes.md to `.gitignore`
+
+### `add`
+
+- adds markdown element to `devnotes.md`
+- available subcommands `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `a`
 
 ### `help`
 

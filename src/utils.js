@@ -39,13 +39,16 @@ module.exports = {
   printHelp: () => {
     console.log(
       '\n',
-      chalk.bold.white('Available commands:\n'),
+      chalk.bold.white('Available commands:\n\n'),
       chalk.blue('  init'),
-      chalk.bold(' .............. '),
+      chalk.bold('.............. '),
       'creates devnotes.md file and add it to .gitignore\n\n',
       chalk.blue('  add'),
-      chalk.bold('  .............. '),
-      'append text to devnotes.md\n\n'
+      chalk.bold(' .............. '),
+      'append text to devnotes.md\n\n',
+      chalk.blue('    subcommands'),
+      chalk.bold('  ... '),
+      'h1 - h6, p, a\n\n'
     );
   },
 };
