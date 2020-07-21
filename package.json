@@ -19,7 +19,8 @@
     "build": "rollup -c",
     "start": "node src/index.js init",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test-run": "rimraf devnotes.md && node src/index.js init"
+    "test-run": "rimraf devnotes.md && node src/index.js init",
+    "lint": "eslint './**/*.js'"
   },
   "dependencies": {
     "chalk": "^4.0.0",
@@ -34,6 +35,16 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
     "rollup": "^2.22.0",
     "rollup-plugin-terser": "^6.1.0"
   },
@@ -42,5 +53,11 @@
   },
   "engines": {
     "node": ">=12"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
   }
 }
