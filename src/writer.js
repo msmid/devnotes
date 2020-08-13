@@ -47,6 +47,16 @@ const selectBlock = (block, text) => {
     case 'a':
       output = md.link(text);
       break;
+    case 'check':
+    case 'c':
+      output = md.checkbox(text);
+      break;
+    case 'li':
+      output = md.listItem(text);
+      break;
+    case 'br':
+      output = md.breakLine();
+      break;
     default:
       utils.errorLog(
         'Unrecognized add subcommand, type devnotes help for reference'

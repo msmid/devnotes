@@ -28,7 +28,7 @@ devnotes init
 ### `add`
 
 - adds markdown element to `devnotes.md`
-- available subcommands `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `a`
+- available subcommands `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `a`, `check`, `li`, `br`
 
 ### `help`
 

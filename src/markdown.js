@@ -26,8 +26,23 @@ const link = (text) => {
   return `\n[${text}]()`;
 };
 
+const checkbox = (text) => {
+  return `- [ ] ${text}`;
+};
+
+const listItem = (text) => {
+  return `- ${text}`;
+};
+
+const breakLine = () => {
+  return `\n`;
+};
+
 module.exports = {
   headline,
   paragraph,
   link,
+  checkbox,
+  listItem,
+  breakLine,
 };
