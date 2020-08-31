@@ -57,6 +57,10 @@ const selectBlock = (block, text) => {
     case 'br':
       output = md.breakLine();
       break;
+    case 'code':
+    case 'co':
+      output = md.code(text);
+      break;
     default:
       utils.errorLog(
         'Unrecognized add subcommand, type devnotes help for reference'

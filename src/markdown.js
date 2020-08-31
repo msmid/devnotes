@@ -38,6 +38,10 @@ const breakLine = () => {
   return `\n`;
 };
 
+const code = (text) => {
+  return '`' + text + '`';
+};
+
 module.exports = {
   headline,
   paragraph,
@@ -45,4 +49,5 @@ module.exports = {
   checkbox,
   listItem,
   breakLine,
+  code,
 };
